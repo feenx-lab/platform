@@ -1,0 +1,23 @@
+{
+  "name": "feenx-platform-devcontainer",
+  "build": {
+   "dockerfile": "Dockerfile",
+   "context": ".."
+  },
+
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.kube/,target=/home/code/.kube/,type=bind"
+  ],
+
+  "userEnvProbe": "loginShell",
+  "postCreateCommand": "cat ~/greeting.txt",
+
+  "customizations": {
+   "vscode": {
+      "extensions": [
+         "ms-azuretools.vscode-docker",
+         "arrterian.nix-env-selector"
+      ]
+   }
+  }
+}
