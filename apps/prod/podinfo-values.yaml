@@ -10,7 +10,7 @@ spec:
   values:
     ingress:
       hosts:
-        - host: podinfo.prod
+        - host: podinfo.feenx.io
           paths:
             - path: /
               pathType: ImplementationSpecific
