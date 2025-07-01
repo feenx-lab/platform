@@ -19,9 +19,9 @@ metadata:
   #   cert-manager.io/issuer: cloudflare-issuer
 spec:
   gatewayClassName: cilium
-  infrastructure:
-    annotations:
-      io.cilium/lb-ipam-ips: 10.10.97.50
+  addresses:
+  - type: IPAddress
+    value: 10.10.97.100
   listeners:
     - protocol: HTTP
       port: 80
