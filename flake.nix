@@ -17,6 +17,7 @@
           packages = [
             kubectl
             kubernetes-helm
+            fluxcd
 
             # Alias scripts, workaround for https://github.com/direnv/direnv/issues/73
             (pkgs.writeShellScriptBin "k" "kubectl $@")
