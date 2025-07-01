@@ -32,7 +32,7 @@ spec:
           from: All
     - protocol: HTTP
       port: 80
-      name: http-gateway
+      name: http-root-gateway
       hostname: "feenx.io"
       allowedRoutes:
         namespaces:
