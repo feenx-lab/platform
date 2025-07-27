@@ -11,9 +11,9 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: podinfo
-      values:
-        podAnnotations:
-          k8s.v1.cni.cncf.io/networks: default/prod-net
+    values:
+      podAnnotations:
+        k8s.v1.cni.cncf.io/networks: default/prod-net
   interval: 50m
   install:
     remediation:
