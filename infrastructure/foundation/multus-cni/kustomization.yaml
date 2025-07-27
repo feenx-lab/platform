@@ -5,9 +5,7 @@ resources:
   - ./namespace.yaml
   - ./multus.yaml
   - ./cni.yaml
-  - ./route-override.yaml
   - ./dhcp.yaml
   - ./networks.yaml
 patches:
   - path: ./ds-patch.yaml
-  - path: ./route-patch.yaml
