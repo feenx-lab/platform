@@ -5,12 +5,18 @@ resources:
   - networks.yaml
 patches:
   - patch: |
-      - op: replace
-        path: /spec/template/spec/volumes
-        value:
-          - name: host-run-netns
-            hostPath:
-              path: /var/run/netns/
+      apiVersion: apps/v1
+      kind: DaemonSet
+      metadata:
+        name: kube-multus-ds
+        namespace: kube-system
+      spec:
+        template:
+          spec:
+            volumes:
+              - name: host-run-netns
+                hostPath:
+                  path: /var/run/netns/
     target:
       kind: DaemonSet
       name: kube-multus-ds
