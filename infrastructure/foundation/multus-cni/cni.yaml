@@ -6,8 +6,6 @@ kind: DaemonSet
 metadata:
   name: kube-cni-deploy-ds
   namespace: multus-cni
-  annotations:
-
   labels:
     tier: node
     app: kube-cni-deploy-ds
