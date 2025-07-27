@@ -56,7 +56,7 @@ spec:
           command: ["/bin/sh"]
           env:
             - name: CNI_VERSION
-              value: "1.6.1" # https://github.com/containernetworking/plugins/releases
+              value: "1.7.1" # https://github.com/containernetworking/plugins/releases
           args:
             - "-c"
             - "wget https://github.com/containernetworking/plugins/releases/download/v$CNI_VERSION/cni-plugins-linux-amd64-v$CNI_VERSION.tgz; tar xvf /cni-plugins-linux-amd64-v$CNI_VERSION.tgz; cp -f /dhcp /host/opt/cni/bin/; sleep 1000000000000"
