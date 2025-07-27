@@ -10,3 +10,4 @@ resources:
   - ./networks.yaml
 patches:
   - path: ./ds-patch.yaml
+  - path: ./route-patch.yaml
