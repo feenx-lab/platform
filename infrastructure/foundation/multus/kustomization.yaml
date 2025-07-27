@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - networks.yaml
+  - ds.yaml
 patches:
   # Patch netns hostPath as per https://www.talos.dev/v1.10/kubernetes-guides/network/multus/#patching-the-daemonset
   - patch: |
