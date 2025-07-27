@@ -9,7 +9,7 @@ spec:
               "plugins": [
                   {
                     "type": "macvlan",
-                    "master": "enp5s0f0np0.97",
+                    "master": "enp5s0f0np0",
                     "ipam": {
                       "type": "dhcp"
                     }
