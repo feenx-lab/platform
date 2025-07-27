@@ -8,7 +8,7 @@ patches:
       - op: remove
         path: /spec/template/spec/volumes
       - op: add
-        path: /spec/template/spec/volumes/
+        path: /spec/template/spec/volumes
         value:
           name: host-run-netns
           hostPath:
