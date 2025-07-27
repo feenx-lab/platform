@@ -5,9 +5,7 @@ resources:
   - networks.yaml
 patches:
   - patch: |
-      - op: remove
-        path: /spec/template/spec/volumes/host-run-netns
-      - op: add
+      - op: replace
         path: /spec/template/spec/volumes
         value:
           - name: host-run-netns
