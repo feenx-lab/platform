@@ -9,7 +9,6 @@ metadata:
 spec:
   template:
     spec:
-      priorityClassName: cluster
       initContainers:
       - command:
         - /install-cni.sh
