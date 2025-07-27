@@ -3,6 +3,13 @@ kind: Kustomization
 resources:
   - networks.yaml
 patches:
-  - path: daemonset.yaml
+  - patch: |
+      - op: replace
+        path: /spec/template/spec/volumes/host-run-netns
+        value:
+          hostPath:
+            path: /var/run/netns/
     target:
       kind: DaemonSet
+      name: kube-multus-ds
+      namespace: kube-system
