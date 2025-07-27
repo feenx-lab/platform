@@ -5,10 +5,8 @@ resources:
 patches:
   - patch: |
       - op: replace
-        path: /spec/template/spec/volumes/host-run-netns
-        value:
-          hostPath:
-            path: /var/run/netns/
+        path: /spec/template/spec/volumes/host-run-netns/hostPath/path
+        value: /var/run/netns/
     target:
       kind: DaemonSet
       name: kube-multus-ds
