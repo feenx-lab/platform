@@ -6,6 +6,9 @@ metadata:
 spec:
   releaseName: podinfo
   chart:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: default/prod-net
     spec:
       chart: podinfo
       sourceRef:
