@@ -26,4 +26,4 @@ spec:
       enabled: true
       className: nginx
     podAnnotations:
-      k8s.v1.cni.cncf.io/networks: multus-cni/prod-net
+      k8s.v1.cni.cncf.io/networks: multus-cni/prod-vlan
