@@ -10,8 +10,8 @@ spec:
     kubernetes.io/os: linux
  virtualRouters:
  - localASN: 64750
-   exportPodCIDR: false # https://docs.cilium.io/en/latest/network/bgp-control-plane/#advertising-podcidrs
-   serviceSelector: # https://docs.cilium.io/en/stable/network/bgp-control-plane/#service-announcements
+   exportPodCIDR: false
+   serviceSelector:
       matchExpressions:
         - {key: io.cilium/announce, operator: NotIn, values: ['dummy-value']}
    serviceAdvertisements:
@@ -25,18 +25,8 @@ spec:
       families: # https://docs.cilium.io/en/latest/network/bgp-control-plane/#address-families
       - afi: ipv4 # disable ipv6 advertisement to work around https://github.com/cilium/cilium/issues/30367/
         safi: unicast
-      # defaults (for argocd sync diff) https://docs.cilium.io/en/stable/network/bgp-control-plane/#fields
       peerPort: 179
-      eBGPMultihopTTL: 1 # 1 = eBGP multihop disabled
+      eBGPMultihopTTL: 1
       connectRetryTimeSeconds: 120
       holdTimeSeconds: 90
       keepAliveTimeSeconds: 30
----
-apiVersion: cilium.io/v2alpha1
-kind: CiliumLoadBalancerIPPool
-metadata:
-  name: cab-talos
-  namespace: kube-system
-spec:
-  blocks:
-    - cidr: "10.7.5.0/24"
