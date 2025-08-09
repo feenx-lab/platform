@@ -12,7 +12,13 @@ spec:
                     "type": "macvlan",
                     "master": "enp5s0f0np0",
                     "ipam": {
-                      "type": "dhcp"
+                      "type": "dhcp",
+                      "provide": [
+                        {
+                          "option": "host-name",
+                          "fromArg": "K8S_POD_NAME"
+                        }
+                      ]
                     }
                   },
                   {
@@ -22,7 +28,7 @@ spec:
                     "addroutes": [
                     {
                         "dst": "10.10.97.0/24",
-                        "gw": "10.10.97.1"
+                        "gw": "10.7.0.1"
                     }
                     ]
                   }
