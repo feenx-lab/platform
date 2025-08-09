@@ -1,10 +1,32 @@
-apiVersion: cilium.io/v2alpha1
-kind: CiliumL2AnnouncementPolicy
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumBGPPeeringPolicy
 metadata:
-  name: default-l2-announcement-policy
-  namespace: kube-system
+ name: cbgpp-policy
+ namespace: cilium
 spec:
-  interfaces:
-    - enp5s0f0np0
-  externalIPs: true
-  loadBalancerIPs: true
+ nodeSelector:
+   matchLabels:
+    kubernetes.io/os: linux
+ virtualRouters:
+ - localASN: 64750
+   exportPodCIDR: false # https://docs.cilium.io/en/latest/network/bgp-control-plane/#advertising-podcidrs
+   serviceSelector: # https://docs.cilium.io/en/stable/network/bgp-control-plane/#service-announcements
+      matchExpressions:
+        - {key: io.cilium/announce, operator: NotIn, values: ['dummy-value']}
+   serviceAdvertisements:
+      - LoadBalancerIP
+   neighbors:
+    - peerAddress: '10.10.97.1/32'
+      peerASN: 64700
+      gracefulRestart:
+          enabled: true
+          restartTimeSeconds: 60
+      families: # https://docs.cilium.io/en/latest/network/bgp-control-plane/#address-families
+      - afi: ipv4 # disable ipv6 advertisement to work around https://github.com/cilium/cilium/issues/30367/
+        safi: unicast
+      # defaults (for argocd sync diff) https://docs.cilium.io/en/stable/network/bgp-control-plane/#fields
+      peerPort: 179
+      eBGPMultihopTTL: 1 # 1 = eBGP multihop disabled
+      connectRetryTimeSeconds: 120
+      holdTimeSeconds: 90
+      keepAliveTimeSeconds: 30
