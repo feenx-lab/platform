@@ -5,4 +5,4 @@ metadata:
   namespace: kube-system
 spec:
   blocks:
-    - cidr: "10.7.5.0/24"
+    - cidr: "10.7.5.0/24" # Assigns IPs from that block to LoadBalancer type Services
