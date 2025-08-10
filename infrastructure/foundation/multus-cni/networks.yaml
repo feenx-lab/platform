@@ -48,7 +48,7 @@ spec:
               "plugins": [
                   {
                     "type": "macvlan",
-                    "master": "enp5s0f0np0.98",
+                    "master": "enp54f3a12.98",
                     "mode": "bridge",
                     "ipam": {
                       "type": "dhcp",
